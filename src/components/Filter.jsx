@@ -1,9 +1,13 @@
 import React from 'react';
 import { StyledInput, StyledLabel } from './App.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+// import { selectContacts } from '../redux/phonebook/contactsSlice';
+import { selectFilter, setFilter } from '../redux/phonebook/filtersSlice';
 
-export const Filter = ({ value, onChange }) => {
+export const Filter = ({ value }) => {
   const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
+
   return (
     <StyledLabel>
       Find contacts by name:
@@ -11,7 +15,7 @@ export const Filter = ({ value, onChange }) => {
         type="text"
         name="filter"
         value={value}
-        onChange={onChange}
+        onChange={() => dispatch(setFilter(value))}
       />
     </StyledLabel>
   );

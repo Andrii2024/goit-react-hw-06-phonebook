@@ -6,20 +6,16 @@ import {
   selectContacts,
 } from '../redux/phonebook/contactsSlice';
 
-export const ContactList = ({ contacts }) => {
+export const ContactList = () => {
   const dispatch = useDispatch();
-  const allContacts = useSelector(selectContacts);
-
-  const handleDelete = id => {
-    dispatch(deleteContact(id));
-  };
+  const contacts = useSelector(selectContacts);
 
   return (
     <ul>
       {contacts.map(contact => (
         <StyledLi key={contact.id}>
           {contact.name} - {contact.number}
-          <StyledButtonList onClick={() => handleDelete(contact.id)}>
+          <StyledButtonList onClick={() => dispatch(deleteContact(contact.id))}>
             Delete
           </StyledButtonList>
         </StyledLi>
@@ -27,19 +23,3 @@ export const ContactList = ({ contacts }) => {
     </ul>
   );
 };
-// import React from 'react';
-// import { StyledButtonList, StyledLi } from './App.styled';
-
-// export const ContactList = ({ contacts, onClickDelete }) => (
-//   <ul>
-//     {contacts.map(contact => (
-//       <StyledLi key={contact.id}>
-//         {contact.name} - {contact.number}
-//         <StyledButtonList onClick={() => onClickDelete(contact.id)}>
-//           Delate
-//         </StyledButtonList>
-//       </StyledLi>
-//     ))}
-//   </ul>
-// );
-// =============================
