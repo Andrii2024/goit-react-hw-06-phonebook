@@ -6,7 +6,7 @@ import { selectFilter, setFilter } from '../redux/phonebook/filtersSlice';
 
 export const Filter = ({ value }) => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
+  // const filter = useSelector(selectFilter);
 
   return (
     <StyledLabel>
