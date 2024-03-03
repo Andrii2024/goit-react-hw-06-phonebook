@@ -22,15 +22,7 @@ export const App = () => {
   };
 
   const handleFilterChange = e => {
-    const value = e.target.value.toLowerCase();
-
-    switch (true) {
-      case value === filter:
-        break;
-      default:
-        dispatch(setFilter(value));
-        break;
-    }
+    dispatch(setFilter(e.target.value.toLowerCase()));
   };
 
   const handleDeleteUser = id => {
