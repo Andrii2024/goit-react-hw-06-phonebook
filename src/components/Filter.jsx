@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyledInput, StyledLabel } from './App.styled';
 import { useDispatch, useSelector } from 'react-redux';
-// import { selectContacts } from '../redux/phonebook/contactsSlice';
 import { selectFilter, setFilter } from '../redux/phonebook/filtersSlice';
 
-export const Filter = ({ onChange }) => {
+export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
-  const handleFilterChange = e => {
+
+  const [localFilter, setLocalFilter] = useState(filter);
+
+  const handleInputChange = e => {
     const value = e.target.value.toLowerCase();
+    console.log('Local filter value:', value);
+    setLocalFilter(value);
     dispatch(setFilter(value));
   };
   return (
@@ -17,8 +21,8 @@ export const Filter = ({ onChange }) => {
       <StyledInput
         type="text"
         name="filter"
-        value={filter}
-        onChange={handleFilterChange}
+        value={localFilter}
+        onChange={handleInputChange}
       />
     </StyledLabel>
   );
