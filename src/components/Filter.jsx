@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyledInput, StyledLabel } from './App.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter, setFilter } from '../redux/phonebook/filtersSlice';
@@ -9,9 +9,13 @@ export const Filter = () => {
 
   const [localFilter, setLocalFilter] = useState(filter);
 
+  useEffect(() => {
+    setLocalFilter(filter);
+  }, [filter]);
+
   const handleInputChange = e => {
     const value = e.target.value.toLowerCase();
-    console.log('Local filter value:', value);
+
     setLocalFilter(value);
     dispatch(setFilter(value));
   };

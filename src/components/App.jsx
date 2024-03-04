@@ -20,10 +20,8 @@ export const App = () => {
   const handleAddContact = newContact => {
     dispatch(addContact(newContact));
   };
-  const handleInputChange = e => {
-    const value = e.target.value.toLowerCase();
-
-    dispatch(setFilter(value));
+  const handleFilterChange = e => {
+    dispatch(setFilter(e.target.value));
   };
 
   const handleDeleteUser = id => {
@@ -39,7 +37,7 @@ export const App = () => {
       <h1>Phone Book</h1>
       <ContactForm onAddContact={handleAddContact} contacts={contacts} />
       <h2>Contacts</h2>
-      <Filter filter={filter} onChange={handleInputChange} />
+      <Filter filter={filter} onChange={handleFilterChange} />
       <ContactList
         contacts={filteredContacts}
         onClickDelete={handleDeleteUser}

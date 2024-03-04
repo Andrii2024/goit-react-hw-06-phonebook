@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export const Notification = ({ message }) => {
-  return <h4 style={{ color: 'red' }}>{message}</h4>;
+  return <h3 style={{ color: 'red' }}>{message}</h3>;
 };
 
 Notification.propTypes = {

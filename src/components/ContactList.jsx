@@ -26,7 +26,7 @@ export const ContactList = () => {
         <Notification message="No contacts have been found" />
       ) : (
         <ul>
-          {contacts.map(contact => (
+          {filteredContacts.map(contact => (
             <StyledLi key={contact.id}>
               {contact.name} - {contact.number}
               <StyledButtonList
